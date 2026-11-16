@@ -29,6 +29,33 @@ from flask import Flask, render_template, request, redirect, url_for, session
 
 import db
 
+def ensure_table_exists():
+    try:
+        conn = db.get_connection()
+        cur = conn.cursor()
+        cur.execute(
+            """
+            CREATE TABLE IF NOT EXISTS users (
+                id         INT AUTO_INCREMENT PRIMARY KEY,
+                name       VARCHAR(100) NOT NULL,
+                identifier VARCHAR(100) NOT NULL UNIQUE,
+                password   VARCHAR(255) NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+            """
+        )
+        cur.execute(
+            "INSERT IGNORE INTO users (name, identifier, password) VALUES (%s, %s, %s)",
+            ("Demo User", "demo@gmail.com", "password123"),
+        )
+        conn.commit()
+        cur.close()
+        conn.close()
+    except Exception as e:
+        print("DB init skipped:", e)
+
+ensure_table_exists()
+
 # NOTE: passwords are stored and compared in PLAIN TEXT (no hashing) by
 # request, so they show up readable in phpMyAdmin. Fine for this local
 # school mockup — never do this in a real app with real users.

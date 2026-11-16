@@ -14,16 +14,16 @@ open phpMyAdmin and see exactly what was typed, but never do this in a
 real app with real users.
 """
 
+import os
 import mysql.connector
 
 DB_CONFIG = {
-    "host": "127.0.0.1",
-    "port": 3306,
-    "user": "root",
-    "password": "",
-    "database": "facebook_db",
+    "host": os.environ.get("DB_HOST", "127.0.0.1"),
+    "port": int(os.environ.get("DB_PORT", 3306)),
+    "user": os.environ.get("DB_USER", "root"),
+    "password": os.environ.get("DB_PASSWORD", ""),
+    "database": os.environ.get("DB_NAME", "facebook_db"),
 }
-
 
 def get_connection():
     """Open a fresh connection to the facebook_db database in XAMPP's MySQL."""
