@@ -1,4 +1,4 @@
-// Connectify mockup — purely cosmetic toggle between the Log In and
+// Facebook mockup — purely cosmetic toggle between the Log In and
 // Sign Up cards. All real logic (accepting the form, creating a session)
 // happens server-side in app.py.
 //

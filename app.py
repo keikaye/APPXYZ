@@ -1,5 +1,5 @@
 """
-Connectify — mockup activity project (login-only version, MySQL-backed)
+Facebook — mockup activity project (login-only version, MySQL-backed)
 --------------------------------------------------------------------------
 Log In and Sign Up are now SEPARATE PAGES:
   - "/"        -> login.html  (the log in form, or the welcome card if logged in)

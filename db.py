@@ -21,12 +21,12 @@ DB_CONFIG = {
     "port": 3306,
     "user": "root",
     "password": "",
-    "database": "connectify_db",
+    "database": "facebook_db",
 }
 
 
 def get_connection():
-    """Open a fresh connection to the connectify_db database in XAMPP's MySQL."""
+    """Open a fresh connection to the facebook_db database in XAMPP's MySQL."""
     return mysql.connector.connect(**DB_CONFIG)
 
 

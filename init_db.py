@@ -2,7 +2,7 @@
 init_db.py — run this ONCE (python init_db.py) before starting app.py.
 
 It talks to XAMPP's MySQL server to:
-  1. Create the "connectify_db" database if it doesn't exist yet.
+  1. Create the "facebook_db" database if it doesn't exist yet.
   2. (Re)create a "users" table with a PLAIN-TEXT "password" column.
   3. Seed the demo account (demo@gmail.com / password123).
 
@@ -16,7 +16,7 @@ the demo account. Fine for a school mockup; just know it happens.
 
 import mysql.connector
 
-DB_NAME = "connectify_db"
+DB_NAME = "facebook_db"
 CONNECTION_ARGS = {"host": "127.0.0.1", "port": 3306, "user": "root", "password": ""}
 
 

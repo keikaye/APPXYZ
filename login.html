@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Connectify — Log In</title>
+  <title>Facebook — Log In</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="auth-body">
@@ -12,11 +12,11 @@
 
     <header class="topbar">
       <div class="logo-row">
-        <svg width="28" height="28" viewBox="0 0 28 28" role="img" aria-label="Connectify logo">
+        <svg width="28" height="28" viewBox="0 0 28 28" role="img" aria-label="Facebook logo">
           <circle cx="14" cy="14" r="14" fill="#2563EB"/>
           <path d="M16 9h-2.2c-1.6 0-2.8 1.3-2.8 2.8V13H9v2.8h2v6.2h2.8v-6.2h2.3l.6-2.8h-2.9v-1c0-.5.4-.9.9-.9H16V9z" fill="#fff"/>
         </svg>
-        <span class="logo-text">Connectify</span>
+        <span class="logo-text">Facebook</span>
       </div>
       <span class="topbar-lang">English (US)</span>
     </header>
@@ -50,13 +50,13 @@
         <div class="welcome-card">
           <span class="avatar avatar-lg" aria-hidden="true">{{ user_name[0] }}</span>
           <h2 class="welcome-title">Welcome, {{ user_name }}!</h2>
-          <p class="welcome-subtitle">You're logged in to this mock Connectify account.</p>
+          <p class="welcome-subtitle">You're logged in to this mock Facebook account.</p>
           <a href="logout" class="btn btn-pill btn-primary">Log Out</a>
         </div>
 
         {% else %}
 
-        <h1 class="login-heading">Log into Connectify</h1>
+        <h1 class="login-heading">Log into Facebook</h1>
 
         <!-- LOG IN FORM -->
         <form class="login-form" method="POST" action="login">
@@ -100,7 +100,7 @@
             Create new account
           </a>
 
-          <p class="brand-footnote">Connectify</p>
+          <p class="brand-footnote">Facebook</p>
 
           <p class="auth-hint">
             Demo login: <strong>demo@gmail.com</strong> / <strong>password123</strong><br>
@@ -124,7 +124,7 @@
         <span>Careers</span><span>Privacy</span><span>Terms</span><span>Cookies</span>
       </nav>
       <p class="footer-note">
-        Connectify © 2026 — practice UI mockup built for a design/coding activity.
+        Facebook © 2026 — practice UI mockup built for a design/coding activity.
         Not a real service; no real data is stored.
       </p>
     </footer>
