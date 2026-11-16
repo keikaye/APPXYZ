@@ -60,7 +60,6 @@ def is_allowed_identifier(value: str) -> bool:
 
 IDENTIFIER_HINT = (
     "The email or mobile number you entered isn't connected to an account. "
-    "Only Gmail, Yahoo, and valid PH mobile numbers are accepted here."
 )
 EMAIL_HINT = "Please use a Gmail or Yahoo email address."
 DB_DOWN_HINT = (
