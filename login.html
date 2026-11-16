@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Connectify — Log In</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-body">
+
+  <div class="page">
+
+    <header class="topbar">
+      <div class="logo-row">
+        <svg width="28" height="28" viewBox="0 0 28 28" role="img" aria-label="Connectify logo">
+          <circle cx="14" cy="14" r="14" fill="#2563EB"/>
+          <path d="M16 9h-2.2c-1.6 0-2.8 1.3-2.8 2.8V13H9v2.8h2v6.2h2.8v-6.2h2.3l.6-2.8h-2.9v-1c0-.5.4-.9.9-.9H16V9z" fill="#fff"/>
+        </svg>
+        <span class="logo-text">Connectify</span>
+      </div>
+      <span class="topbar-lang">English (US)</span>
+    </header>
+
+    <main class="hero-row">
+
+      <!-- Decorative hero: hidden on tablet/phone, shown on desktop/laptop -->
+      <section class="hero-decorative" aria-hidden="true">
+        <div class="collage">
+          <div class="collage-card collage-card-1">
+            <div class="collage-icon">🖼️</div>
+          </div>
+          <div class="collage-card collage-card-2">
+            <div class="collage-icon">🎧</div>
+            <div class="collage-dots">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="floating-badge">⏱ 18:45</div>
+          <div class="floating-heart">❤️</div>
+          <div class="floating-face">😄</div>
+        </div>
+        <p class="hero-tagline">Explore the things <span class="accent">you love.</span></p>
+      </section>
+
+      <!-- Login panel: always visible, centered on narrow screens -->
+      <section class="login-panel">
+
+        {% if logged_in %}
+        <!-- WELCOME CARD (shown after a successful login/signup) -->
+        <div class="welcome-card">
+          <span class="avatar avatar-lg" aria-hidden="true">{{ user_name[0] }}</span>
+          <h2 class="welcome-title">Welcome, {{ user_name }}!</h2>
+          <p class="welcome-subtitle">You're logged in to this mock Connectify account.</p>
+          <a href="logout" class="btn btn-pill btn-primary">Log Out</a>
+        </div>
+
+        {% else %}
+
+        <h1 class="login-heading">Log into Connectify</h1>
+
+        <!-- LOG IN FORM -->
+        <form class="login-form" method="POST" action="login">
+
+          {% if error %}
+            <p class="auth-error" role="alert">{{ error }}</p>
+          {% endif %}
+
+          <label for="login-email" class="sr-only">Email address or phone number</label>
+          <input id="login-email" class="auth-input" type="text" name="email" autocomplete="username"
+                 placeholder="Email address or phone number"
+                 value="{{ prefill_email or '' }}" required>
+
+          <label for="login-password" class="sr-only">Password</label>
+          <input id="login-password" class="auth-input" type="password" name="password"
+                 autocomplete="current-password" placeholder="Password" required>
+
+          <button type="submit" class="btn btn-pill btn-primary btn-block">Log In</button>
+
+          <a href="#" class="forgot-link">Forgot password?</a>
+
+          <!-- Plain navigation link: takes the user to the separate /signup page -->
+          <a href="{{ url_for('signup_page') }}" class="btn btn-pill btn-outline btn-block">
+            Create new account
+          </a>
+
+          <p class="brand-footnote">Connectify</p>
+
+          <p class="auth-hint">
+            Demo login: <strong>demo@gmail.com</strong> / <strong>password123</strong><br>
+            Accepted formats: Gmail, Yahoo, or a PH mobile number (e.g. 09171234567)
+            — any password works if you haven't signed up with it yet.
+          </p>
+        </form>
+
+        {% endif %}
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <nav class="footer-links">
+        <span>English (US)</span><span>Filipino</span><span>Bisaya</span><span>Español</span>
+        <span>日本語</span><span>한국어</span><span>中文(简体)</span><span>More languages…</span>
+      </nav>
+      <hr class="footer-divider">
+      <nav class="footer-links">
+        <span>Sign Up</span><span>Log In</span><span>Help</span><span>About</span>
+        <span>Careers</span><span>Privacy</span><span>Terms</span><span>Cookies</span>
+      </nav>
+      <p class="footer-note">
+        Connectify © 2026 — practice UI mockup built for a design/coding activity.
+        Not a real service; no real data is stored.
+      </p>
+    </footer>
+  </div>
+
+</body>
+</html>
