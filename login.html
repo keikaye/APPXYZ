@@ -61,18 +61,35 @@
         <!-- LOG IN FORM -->
         <form class="login-form" method="POST" action="login">
 
-          {% if error %}
-            <p class="auth-error" role="alert">{{ error }}</p>
-          {% endif %}
-
           <label for="login-email" class="sr-only">Email address or phone number</label>
-          <input id="login-email" class="auth-input" type="text" name="email" autocomplete="username"
+          <input id="login-email" class="auth-input {{ 'field-error' if error_field == 'email' else '' }}"
+                 type="text" name="email" autocomplete="username"
                  placeholder="Email address or phone number"
                  value="{{ prefill_email or '' }}" required>
 
+          {% if error and error_field == 'email' %}
+            <p class="auth-error-box" role="alert">
+              <span class="auth-error-icon" aria-hidden="true">&#9888;</span>
+              <span>
+                {{ error }}
+                {% if show_account_link %}
+                  <a href="{{ url_for('signup_page') }}">Create a new account instead.</a>
+                {% endif %}
+              </span>
+            </p>
+          {% endif %}
+
           <label for="login-password" class="sr-only">Password</label>
-          <input id="login-password" class="auth-input" type="password" name="password"
+          <input id="login-password" class="auth-input {{ 'field-error' if error_field == 'password' else '' }}"
+                 type="password" name="password"
                  autocomplete="current-password" placeholder="Password" required>
+
+          {% if error and error_field != 'email' %}
+            <p class="auth-error-box" role="alert">
+              <span class="auth-error-icon" aria-hidden="true">&#9888;</span>
+              <span>{{ error }}</span>
+            </p>
+          {% endif %}
 
           <button type="submit" class="btn btn-pill btn-primary btn-block">Log In</button>
 

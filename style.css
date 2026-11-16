@@ -133,6 +133,30 @@ a:hover { text-decoration: underline; }
   border-radius: 6px; padding: 10px 12px; font-size: 13px; margin: 0;
 }
 
+/* Field-level error state: input border turns red */
+.auth-input.field-error {
+  border-color: #dc2626;
+  background: #fff6f6;
+}
+.auth-input.field-error:focus { outline-color: #dc2626; }
+
+/* Icon + message (+ optional action link) error row, shown under the field */
+.auth-error-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #1c1e21;
+  background: #fff5f5;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin: 0;
+}
+.auth-error-icon { flex-shrink: 0; color: #dc2626; font-size: 14px; }
+.auth-error-box a { font-weight: 600; }
+
 /* ===== Welcome card (post-login) ===== */
 .welcome-card { text-align: center; }
 .avatar {

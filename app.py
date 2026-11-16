@@ -59,8 +59,8 @@ def is_allowed_identifier(value: str) -> bool:
 
 
 IDENTIFIER_HINT = (
-    "Please use a Gmail or Yahoo email address, or a valid PH mobile number "
-    "(e.g. 09171234567 or +639171234567)."
+    "The email or mobile number you entered isn't connected to an account. "
+    "Only Gmail, Yahoo, and valid PH mobile numbers are accepted here."
 )
 EMAIL_HINT = "Please use a Gmail or Yahoo email address."
 DB_DOWN_HINT = (
@@ -82,10 +82,15 @@ def login():
     password = request.form.get("password", "")
 
     error = None
+    error_field = None       # which input gets the red border: "email", "password", or None
+    show_account_link = False  # whether to show the "Create a new account" action link
+
     if not identifier or not password:
         error = "Please fill in both fields."
     elif not is_allowed_identifier(identifier):
         error = IDENTIFIER_HINT
+        error_field = "email"
+        show_account_link = True
     else:
         try:
             user = db.find_user_by_identifier(identifier)
@@ -98,6 +103,7 @@ def login():
                 # logged in before) — its real password still has to match.
                 if user["password"] != password:
                     error = "Incorrect password for this account."
+                    error_field = "password"
                 else:
                     session["user_email"] = user["identifier"]
                     session["user_name"] = user["name"]
@@ -119,7 +125,13 @@ def login():
                     session["user_name"] = guest_name
                     return redirect(url_for("index"))
 
-    return render_template("login.html", error=error, prefill_email=identifier)
+    return render_template(
+        "login.html",
+        error=error,
+        error_field=error_field,
+        show_account_link=show_account_link,
+        prefill_email=identifier,
+    )
 
 
 @app.route("/signup", methods=["GET"])
