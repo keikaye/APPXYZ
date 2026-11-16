@@ -1,29 +1,59 @@
 /* ===== Reset & base ===== */
-* { box-sizing: border-box; }
-.is-hidden { display: none; }
+* {
+   box-sizing: border-box; }
+
+   .is-hidden {
+   display: none; 
+  }
+
 body {
   margin: 0;
   font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
   color: #1c1e21;
   background: #fff;
 }
-a { color: #2563EB; text-decoration: none; }
-a:hover { text-decoration: underline; }
+
+a {
+   color: #2563EB;
+    text-decoration: none; 
+  } 
+
+a:hover {
+   text-decoration: underline; }
 .sr-only {
   position: absolute; width: 1px; height: 1px;
   overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap;
 }
 
 /* ===== Page shell ===== */
-.page { display: flex; flex-direction: column; min-height: 100vh; }
+.page {
+   display: flex; 
+   flex-direction: column; 
+   min-height: 100vh; 
+  }
 
 .topbar {
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between;
   padding: 18px 32px;
 }
-.logo-row { display: flex; align-items: center; gap: 8px; }
-.logo-text { font-size: 18px; font-weight: 700; color: #050505; }
-.topbar-lang { font-size: 13px; color: #606770; }
+
+.logo-row {
+  display: flex; 
+  align-items: center; 
+}
+
+.fb-logo {
+  width: 48px; 
+  height: 48px; 
+  display: block; 
+}
+
+.topbar-lang {
+  font-size: 13px; 
+  color: #606770; 
+}
 
 .hero-row {
   flex: 1;
@@ -37,53 +67,30 @@ a:hover { text-decoration: underline; }
 }
 
 /* ===== Decorative hero (desktop/laptop only) ===== */
-.hero-decorative { flex: 1 1 55%; min-width: 0; }
-.collage {
-  position: relative;
-  height: 320px;
-  margin-bottom: 28px;
+.hero-decorative {
+  flex: 1 1 55%; 
+  min-width: 0; 
 }
-.collage-card {
-  position: absolute;
-  border-radius: 18px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-  display: flex; align-items: center; justify-content: center;
+
+.hero-image {
+  display: block;
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  margin-bottom: 16px;
 }
-.collage-card-1 {
-  width: 160px; height: 200px; left: 0; top: 40px;
-  background: linear-gradient(160deg, #e0e7ff, #c7d2fe);
+
+.hero-tagline {
+  font-size: 28px; 
+  font-weight: 700; 
+  color: #1c1e21; 
+  line-height: 1.3; 
+  max-width: 420px; 
 }
-.collage-card-2 {
-  width: 220px; height: 280px; left: 170px; top: 0;
-  background: linear-gradient(160deg, #fecaca, #fca5a5);
+
+.hero-tagline .accent {
+  color: #2563EB; 
 }
-.collage-icon { font-size: 48px; }
-.collage-dots {
-  position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
-  display: flex; gap: 6px;
-}
-.collage-dots span {
-  width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.8);
-}
-.floating-badge {
-  position: absolute; top: 18px; right: 40px;
-  background: #2563EB; color: #fff; font-size: 12px; font-weight: 600;
-  padding: 4px 10px; border-radius: 12px;
-}
-.floating-heart {
-  position: absolute; bottom: 60px; right: 20px;
-  font-size: 28px; background: #fff; border-radius: 50%;
-  width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-.floating-face {
-  position: absolute; top: -10px; left: 60px;
-  font-size: 30px; background: #fff; border-radius: 50%;
-  width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-.hero-tagline { font-size: 28px; font-weight: 700; color: #1c1e21; line-height: 1.3; max-width: 420px; }
-.hero-tagline .accent { color: #2563EB; }
 
 /* ===== Login panel ===== */
 .login-panel { flex: 0 0 340px; width: 100%; max-width: 340px; }
@@ -126,7 +133,8 @@ a:hover { text-decoration: underline; }
   background: none; border: none; color: #2563EB; font-weight: 600;
   cursor: pointer; font-size: inherit; padding: 0;
 }
-.brand-footnote { text-align: center; font-size: 14px; font-weight: 700; color: #606770; margin: 8px 0 0; }
+.brand-footnote { text-align: center; margin: 12px 0 0; }
+.meta-logo { height: 20px; width: auto; display: inline-block; }
 .auth-hint { text-align: center; font-size: 12px; color: #8a8d91; margin: 4px 0 0; }
 .auth-error {
   background: #fde2e1; color: #c0392b; border: 1px solid #f3b4b1;
