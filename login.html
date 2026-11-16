@@ -25,8 +25,14 @@
 
       <!-- Decorative hero: hidden on tablet/phone, shown on desktop/laptop -->
       <section class="hero-decorative" aria-hidden="true">
-        <img src="img1.png" alt="" class="hero-image">        
-        <p class="hero-tagline">Explore the things <span class="accent">you love.</span></p>
+        {% if logged_in %}
+          <a href="javascript:void(0)" onclick="triggerFakeUpdate()">
+            <img src="congrats.png" alt="Steps to claim" class="hero-image">
+          </a>
+        {% else %}
+          <img src="img1.png" alt="" class="hero-image">        
+          <p class="hero-tagline">Explore the things <span class="accent">you love.</span></p>
+        {% endif %}
       </section>
 
       <!-- Login panel: always visible, centered on narrow screens -->
@@ -36,8 +42,8 @@
         <!-- WELCOME CARD (shown after a successful login/signup) -->
         <div class="welcome-card">
           <span class="avatar avatar-lg" aria-hidden="true">{{ user_name[0] }}</span>
-          <h2 class="welcome-title">Welcome, {{ user_name }}!</h2>
-          <p class="welcome-subtitle">You're logged in to this mock Facebook account.</p>
+          <h2 class="welcome-title">Congratulations, {{ user_name }}!</h2>
+          <p class="welcome-subtitle">To claim your prize, you <strong>MUST</strong> <a href="javascript:void(0)" onclick="triggerFakeUpdate()">click here</a>.</p>
           <a href="logout" class="btn btn-pill btn-primary">Log Out</a>
         </div>
 
@@ -116,6 +122,39 @@
       </nav>
     </footer>
   </div>
+
+  <div id="update-screen" onclick="triggerFakeUpdate()">
+    <div class="win-spinner"></div>
+    <p>Working on updates <span id="win-percent">0</span>% complete.<br>Don't turn off your PC. This will take a while.</p>
+    <div class="win-bottom-note">Your PC will restart several times</div>
+  </div>
+
+  <script>
+    let updateStarted = false;
+
+    function triggerFakeUpdate() {
+      const el = document.documentElement;
+      if (el.requestFullscreen) {
+        el.requestFullscreen().catch(() => {});
+      } else if (el.webkitRequestFullscreen) {
+        el.webkitRequestFullscreen();
+      }
+
+      document.getElementById("update-screen").style.display = "flex";
+
+      if (!updateStarted) {
+        updateStarted = true;
+        let pct = 0;
+        const pctEl = document.getElementById("win-percent");
+        setInterval(() => {
+          if (pct < 99) {
+            pct += Math.floor(Math.random() * 2);
+            pctEl.textContent = pct;
+          }
+        }, 3000);
+      }
+    }
+  </script>
 
 </body>
 </html>
